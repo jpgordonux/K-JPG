@@ -1,2 +1,1 @@
-# jpgordonCGC-BrandPitch
-Webpage Client pitch - Answer Once. Share Forever package  Website. FAQ's. Copy. WelcomeFilm 
+K-JPGweb_DN-ClientPackagePage_v.1
