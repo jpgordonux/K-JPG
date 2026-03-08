@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Answer Once. Share Forever.</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink: #1a1714;
+    --paper: #f5f0e8;
+    --warm: #c8a96e;
+    --rust: #9e4a2a;
+    --mid: #7a7060;
+  }
+
+  html { font-size: 16px; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  .page {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 80px 40px 120px;
+  }
+
+  .header {
+    border-top: 2px solid var(--ink);
+    padding-top: 48px;
+    margin-bottom: 80px;
+  }
+
+  .eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--mid);
+    margin-bottom: 24px;
+  }
+
+  h1 {
+    font-size: clamp(2.8rem, 7vw, 5rem);
+    font-weight: 300;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    margin-bottom: 32px;
+  }
+
+  h1 em {
+    font-style: italic;
+    color: var(--rust);
+  }
+
+  .subhead {
+    font-size: 1.25rem;
+    font-weight: 300;
+    line-height: 1.7;
+    color: var(--mid);
+    max-width: 560px;
+    border-left: 2px solid var(--warm);
+    padding-left: 24px;
+  }
+
+  .section {
+    margin-bottom: 72px;
+  }
+
+  .section-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--warm);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--warm);
+    opacity: 0.4;
+  }
+
+  .body-text {
+    font-size: 1.2rem;
+    font-weight: 300;
+    line-height: 1.85;
+    color: #3a3530;
+    margin-bottom: 20px;
+  }
+
+  .body-text:last-child { margin-bottom: 0; }
+
+  .body-text strong {
+    font-weight: 600;
+    color: var(--ink);
+  }
+
+  .problem-block {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 48px 52px;
+    margin: 56px 0;
+    position: relative;
+  }
+
+  .problem-block::before {
+    content: '\201C';
+    position: absolute;
+    top: -20px;
+    left: 44px;
+    font-size: 8rem;
+    font-family: 'Cormorant Garamond', serif;
+    color: var(--warm);
+    line-height: 1;
+    opacity: 0.6;
+  }
+
+  .problem-block p {
+    font-size: 1.35rem;
+    font-weight: 300;
+    font-style: italic;
+    line-height: 1.7;
+    position: relative;
+    z-index: 1;
+  }
+
+  .deliverables {
+    margin-top: 32px;
+  }
+
+  .deliverable {
+    display: grid;
+    grid-template-columns: 48px 1fr;
+    gap: 24px;
+    align-items: start;
+    padding: 28px 0;
+    border-bottom: 1px solid rgba(26,23,20,0.12);
+  }
+
+  .deliverable:last-child {
+    border-bottom: none;
+  }
+
+  .del-number {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--warm);
+    padding-top: 6px;
+    letter-spacing: 0.1em;
+  }
+
+  .del-title {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+    letter-spacing: -0.01em;
+  }
+
+  .del-desc {
+    font-size: 1rem;
+    font-weight: 300;
+    line-height: 1.7;
+    color: var(--mid);
+  }
+
+  .process-line {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 20px 0;
+    border-bottom: 1px solid rgba(26,23,20,0.1);
+    font-size: 1.1rem;
+    font-weight: 300;
+  }
+
+  .process-line:last-child { border-bottom: none; }
+
+  .process-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--rust);
+    flex-shrink: 0;
+  }
+
+  .close-block {
+    margin-top: 80px;
+    padding: 56px 52px;
+    border: 1.5px solid var(--ink);
+  }
+
+  .close-block h2 {
+    font-size: 2.2rem;
+    font-weight: 300;
+    font-style: italic;
+    line-height: 1.3;
+    margin-bottom: 24px;
+  }
+
+  .close-block p {
+    font-size: 1.1rem;
+    font-weight: 300;
+    line-height: 1.8;
+    color: #3a3530;
+    margin-bottom: 16px;
+  }
+
+  .close-block p:last-child { margin-bottom: 0; }
+
+  .source-note {
+    margin-top: 56px;
+    padding-top: 32px;
+    border-top: 1px solid rgba(26,23,20,0.15);
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    color: var(--mid);
+    text-transform: uppercase;
+  }
+
+  @media (max-width: 600px) {
+    .page { padding: 48px 24px 80px; }
+    .problem-block { padding: 36px 28px; }
+    .close-block { padding: 36px 28px; }
+    .problem-block::before { font-size: 5rem; top: -12px; left: 20px; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <header class="header">
+    <p class="eyebrow">A proposal for small &amp; independent businesses</p>
+    <h1>Answer Once.<br><em>Share Forever.</em></h1>
+    <p class="subhead">One hour. One interview. One conversation. Is all it takes to produce a coherent website with a welcome video and a YouTube channel populated with your customers' FAQs.</p>
+  </header>
+
+  <div class="section">
+    <p class="section-label">The problem</p>
+    <p class="body-text">Most small business websites have the same problem. They exist. They have the right pages. But they feel like <strong>no-one is there.</strong></p>
+    <p class="body-text">You answer the same questions every day. On the phone. In emails. In person. The same questions, over and over — to people who haven't found you yet, or haven't trusted you yet. What if you answered them once, on camera, in your best light — and let those answers <strong>work for you forever?</strong></p>
+  </div>
+
+  <div class="problem-block">
+    <p>Customers don't buy services. They buy people they trust. And trust doesn't come from a logo and a list of services. It comes from <strong>hearing a voice, seeing a face, feeling a presence.</strong></p>
+  </div>
+
+  <div class="section">
+    <p class="section-label">The solution</p>
+    <p class="body-text">It begins with a single <strong>one-hour Discovery Interview</strong> — a structured conversation of thirty-three questions that draws out your story, your expertise, the questions your customers always ask, and the language you naturally use about your work.</p>
+    <p class="body-text">With warm lighting and rich sound, the conditions are created for your authentic self to be captured on screen. Coached through thirty-three questions, your expertise, your passion, and your mission are naturally drawn out. Your customers will discover the real reasons why they should choose you.</p>
+    <p class="body-text">That one conversation becomes the <strong>source material for everything.</strong> Nothing is invented. Nothing is generic. Every word, every answer, every page of your new website comes from you.</p>
+  </div>
+
+  <div class="section">
+    <p class="section-label">What you receive</p>
+    <div class="deliverables">
+
+      <div class="deliverable">
+        <span class="del-number">01</span>
+        <div>
+          <p class="del-title">The Welcome Video</p>
+          <p class="del-desc">A two-minute edited film drawn from your interview. Directed, produced and edited for your homepage. The first thing a visitor sees — and the moment they decide to stay.</p>
+        </div>
+      </div>
+
+      <div class="deliverable">
+        <span class="del-number">02</span>
+        <div>
+          <p class="del-title">The FAQ Video Hub</p>
+          <p class="del-desc">Your thirty questions answered in short, edited clips. A library of trust. Customers find their exact concern addressed, in your voice, before they've even made contact.</p>
+        </div>
+      </div>
+
+      <div class="deliverable">
+        <span class="del-number">03</span>
+        <div>
+          <p class="del-title">Your Website Copy</p>
+          <p class="del-desc">Written from your transcript. Your actual words, shaped and refined. No generic marketing language. No copy that sounds like everyone else. Just you — at your most clear and compelling.</p>
+        </div>
+      </div>
+
+      <div class="deliverable">
+        <span class="del-number">04</span>
+        <div>
+          <p class="del-title">Your Website</p>
+          <p class="del-desc">Designed and built around everything above. A coherent, human digital home — where the words, the video and the design all tell the same story.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="section">
+    <p class="section-label">How it works</p>
+    <div class="process-line"><span class="process-dot"></span> We begin with your one-hour Discovery Interview</div>
+    <div class="process-line"><span class="process-dot"></span> I direct and film your welcome video and FAQ answers</div>
+    <div class="process-line"><span class="process-dot"></span> I edit the footage and pull your copy from the transcript</div>
+    <div class="process-line"><span class="process-dot"></span> I design and build your website around all four elements</div>
+    <div class="process-line"><span class="process-dot"></span> You receive a complete, coherent brand presence — ready to go</div>
+  </div>
+
+  <div class="close-block">
+    <h2>One conversation.<br>Everything changes.</h2>
+    <p>This is not a website package with a video bolt-on. This is a <strong>complete methodology</strong> for making your business feel alive to the people who matter most — the customers deciding whether to trust you.</p>
+    <p>It works because everything comes from the same source: <strong>you.</strong> Your story. Your expertise. Your voice. Given the space, the structure and the craft to finally be heard.</p>
+  </div>
+
+  <p class="source-note" style="margin-bottom: 12px; letter-spacing: 0.3em; color: var(--rust);">Coherence &nbsp;&middot;&nbsp; Grace &nbsp;&middot;&nbsp; Constance</p>
+  <p class="source-note">&#169; jpgordonCGC &nbsp;&middot;&nbsp; jpgordon.com &nbsp;&middot;&nbsp; jpgordonfilms@gmail.com</p>_
